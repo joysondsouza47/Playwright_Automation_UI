@@ -3,7 +3,7 @@ import { ItemExclusion } from "../pages/item_Exclusion_Page";
 import { additems, multipleitems } from "../test-data/ItemData";
 import { csvreader } from "../utils/Itemexclusionfilereader";
 
-test("Item add/edit/delete from Exclusion", async({page})=>
+test("Item add/edit/delete from Exclusion @sanity @regression", async({page})=>
 {
     const additemexclusion = new ItemExclusion(page,additems.singleitem);
     await page.goto("https://sc-sor-food-sc-sor-food-ofv-ui-e2e.int.stg.jspaas.uk/item-exclusions");
@@ -18,13 +18,13 @@ test("Item add/edit/delete from Exclusion", async({page})=>
     console.log("Item deleted successfully!")
 })
 
-test("Items add/edit/delete from Exclusion",async ({page})=>
+test("Items add/edit/delete from Exclusion  @e2e",async ({page})=>
 {
     test.setTimeout(600000);
     await page.goto("https://sc-sor-food-sc-sor-food-ofv-ui-e2e.int.stg.jspaas.uk/item-exclusions");
     for (const item of multipleitems)
     {
-        const additemexclusion = new ItemExclusion(page,additems.singleitem);
+        const additemexclusion = new ItemExclusion(page,item);
         await additemexclusion.AddItemExclusion(item);
     }
     console.log("Items added successfully!")
@@ -43,7 +43,7 @@ test("Items add/edit/delete from Exclusion",async ({page})=>
 
 })
 
-test("Bulk Items add/edit/delete from Exclusion", async({page})=>
+test("Bulk Items add from Exclusion @regression @e2e ", async({page})=>
 {
     const additemexclusion = new ItemExclusion(page,additems.singleitem);
     await page.goto("https://sc-sor-food-sc-sor-food-ofv-ui-e2e.int.stg.jspaas.uk/item-exclusions");
@@ -53,7 +53,7 @@ test("Bulk Items add/edit/delete from Exclusion", async({page})=>
 } )
 
 
-test("ItemExclusion List download and compare", async({page})=>
+test("ItemExclusion List download and compare @regression @e2e ", async({page})=>
 {
     const additemexclusion = new ItemExclusion(page,additems.singleitem);  
     await page.goto("https://sc-sor-food-sc-sor-food-ofv-ui-e2e.int.stg.jspaas.uk/item-exclusions")
@@ -68,7 +68,7 @@ test("ItemExclusion List download and compare", async({page})=>
     console.log("File data comparision susscessful!")
 })
 
-test("Bulk Items edit/delete from Exclusion", async({page})=>
+test("Bulk Items edit/delete from Exclusion @regression @e2e ", async({page})=>
 {
     const additemexclusion = new ItemExclusion(page,additems.singleitem);
     await page.goto("https://sc-sor-food-sc-sor-food-ofv-ui-e2e.int.stg.jspaas.uk/item-exclusions");

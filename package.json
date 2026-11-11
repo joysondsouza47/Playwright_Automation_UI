@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:sanity" :"playwright test --grep @sanity --headed",
+    "test:regression" :"playwright test --grep @regression --headed",
+    "test:e2e" : "playwright test --grep @e2e --headed"
+  },
   "keywords": [],
   "type": "commonjs",
   "devDependencies": {
